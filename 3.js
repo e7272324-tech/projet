@@ -8,17 +8,16 @@ Cin: "bh006", Nom: "Berrada", Prénom: "Nadia", Parti_politique: "Alliance Citoy
 Cin: "bh007", Nom: "Chraibi", Prénom: "Mehdi", Parti_politique: "Parti de l'Avenir", Âge: 33, Electeurs: ["ws639", "ed7412","rf825", "tg3964","yh472", "uj8153","ik956"]},{
 Cin: "bh008", Nom: "Alaoui", Prénom: "Imane", Parti_politique: "Mouvement Progressiste", Âge: 45, Electeurs: ["ab214", "cd5831", "ef639", "gh7412", "ij825", "kl3964", "mn472", "op8153"]},{
 Cin: "bh009", Nom: "Bennani", Prénom: "Omar", Parti_politique: "Parti du Renouveau", Âge: 58, Electeurs: ["qr956", "st2478", "uv381", "wx6295", "yz714", "aa3582", "bb263", "cc9471", "dd548"]},{
-Cin: "bh010", Nom: "Skalli", Prénom: "Sara", Parti_politique: "Alliance Citoyenne", Âge: 31, Electeurs: ["hk183", "lm7294", "np456", "qr8127", "st365", "uv9402", "wx5717"]},{
-}]
+Cin: "bh010", Nom: "Skalli", Prénom: "Sara", Parti_politique: "Alliance Citoyenne", Âge: 31, Electeurs: ["hk183", "lm7294", "np456", "qr8127", "st365", "uv9402", "wx5717"]}]
 function Afficher(tableau,i){
-    console.log(`Cin :$(tableau[i],Cin),Nom :$(tableau[i],Nom),Prenom :$(tableau[i],Prenom),PartiPolitique : $(tableau[i],PartiPolitique),age : $(tebleau[i],Age),Electeurs : $(tableaus[i],Electeurs)`)
-
+    console.log(`Cin :${tableau[i].Cin},Nom :${tableau[i].Nom},Prenom :${tableau[i].Prénom},PartiPolitique : ${tableau[i].Parti_politique},age : ${tableau[i].Âge},Electeurs : ${tableau[i].Electeurs.length}`)
 }
 function choisir(){
     console.log(`Choisez 1 pour Trier les candidats par nombre de votes.\nChoisez 2 pour Filtrer et afficher uniquement les candidats d'un parti politique spécifique.`);
     const choix = parseInt(prompt("Entrez votre choix :"))
     switch(choix){
         case 1 :
+        // const choix_ordre = prompt("Trier les candidats par nombres de votes : ")
             const Tri = [...candidat]
                 for (let i=0;i<Tri.length;i++){
                     for(let j=i+1;j<Tri.length;j++){
@@ -28,6 +27,7 @@ function choisir(){
                             Tri [j] = swp
                         }
                     }
+                    console.log("i = "+i)
                     Afficher(Tri,i)
                 }
             break
