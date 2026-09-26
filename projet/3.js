@@ -11,7 +11,7 @@ Cin: "bh009", Nom: "Bennani", Prénom: "Omar", Parti_politique: "Parti du Renouv
 Cin: "bh010", Nom: "Skalli", Prénom: "Sara", Parti_politique: "Alliance Citoyenne", Âge: 31, Electeurs: ["hk183", "lm7294", "np456", "qr8127", "st365", "uv9402", "wx5717"]},{
 }]
 function Afficher(tableau,i){
-    console.log(`Cin :$(tableau[i],cin),Nom :$(tableau[i],nom),Prenom :$(tableau[i],prenom),PartiPolitique : $(tableau[i],partiPolitique),age : $(tebleau[i],age),Electeurs : $(tableaus[i],electeurs)`)
+    console.log(`Cin :$(tableau[i],Cin),Nom :$(tableau[i],Nom),Prenom :$(tableau[i],Prenom),PartiPolitique : $(tableau[i],PartiPolitique),age : $(tebleau[i],Age),Electeurs : $(tableaus[i],Electeurs)`)
 
 }
 function choisir(){
@@ -44,3 +44,4 @@ function choisir(){
         }
 }
 choisir()
+// console.log(choisir)
