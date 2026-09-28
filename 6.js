@@ -13,15 +13,14 @@ function Supprimer(){
     const CIN = prompt("Entrez le CIN que vous voulez supprimer : ")
     for (i=0;i<candidat.length;i++){
         if (candidat[i].Cin == CIN){
-            console.log("===================================")
+            console.log("--------------------------------")
             console.log("Voulez-vous supprimer ce candidat ?\n")
             // Afficher(candidat,i)
-            console.log("===================================")
+            console.log("--------------------------------")
             console.log("choisez 1 pour \"OUI\nchoisez 2 pour \"NO\"\nchoisez autre chose pour quitter");      
             const Choix = parseInt(prompt("=>"))
             switch(Choix) {
             case 1 :
-                // splice(candidat,i)
                 console.log(candidat)
                 break
             case 2 :
@@ -36,4 +35,3 @@ function Supprimer(){
     }
 }
 Supprimer()
-// console.log(Afficher)

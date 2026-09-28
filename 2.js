@@ -3,7 +3,7 @@ const prompt = require("prompt-sync")();
     let candidatList = [];
     const num = parseInt(prompt("num ?"))
 for (let i = 0; i < num; i++) {
-    console.log("*")
+    console.log("--------------------------------")
     ajouterCandidat()
     console.log(candidatList)
 }

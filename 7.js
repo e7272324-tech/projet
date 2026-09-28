@@ -16,9 +16,9 @@ function Rechercher() {
     const Nom = prompt("Saisissez le nom du candidat que vous souhaitez rechercher : ")
     const indice = Candidat.findIndex(c => c.Nom.toUpperCase() === Nom.toUpperCase())
     if (indice !== -1) {
-        console.log("===================================");
+        console.log("--------------------------------");
         Afficher(Candidat,indice)
-        console.log("===================================");
+        console.log("--------------------------------");
     } else {
         console.log("Le candidat que vous choisissez n'existe pas.");
     }

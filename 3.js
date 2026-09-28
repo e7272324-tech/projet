@@ -17,7 +17,6 @@ function choisir(){
     const choix = parseInt(prompt("Entrez votre choix :"))
     switch(choix){
         case 1 :
-        // const choix_ordre = prompt("Trier les candidats par nombres de votes : ")
             const Tri = [...candidat]
                 for (let i=0;i<Tri.length;i++){
                     for(let j=i+1;j<Tri.length;j++){
@@ -44,4 +43,3 @@ function choisir(){
         }
 }
 choisir()
-// console.log(choisir)
