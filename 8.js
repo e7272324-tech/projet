@@ -30,20 +30,26 @@ function Statistiques() {
         }
         if (dejaCalcule === false) {
             let compteur = 0;
+
             for (let j = 0; j < Candidat.length; j++) {
                 if (Candidat[j].Parti_politique === partiActuel) {
                     compteur++;
                 }
             }
+
             console.log("- " + partiActuel + " : " + compteur);
+
             partiesVisitees.push(partiActuel);
         }
     }
+
     console.log("\n--- Top 3 des candidats ---");
+
     let copialCandidat = [];
     for (let i = 0; i < Candidat.length; i++) {
         copialCandidat.push(Candidat[i]);
     }
+
     for (let i = 0; i < copialCandidat.length; i++) {
         for (let j = i + 1; j < copialCandidat.length; j++) {
             if (copialCandidat[i].Electeurs.length < copialCandidat[j].Electeurs.length) {
@@ -53,10 +59,12 @@ function Statistiques() {
             }
         }
     }
+
     let limite = 3;
     if (copialCandidat.length < 3) {
         limite = copialCandidat.length;
     }
+
     for (let i = 0; i < limite; i++) {
         console.log((i + 1) + ". " + copialCandidat[i].Nom + " " + copialCandidat[i].Prenom + " - Votes : " + copialCandidat[i].Electeurs.length);
     }
