@@ -14,25 +14,25 @@ function Modifier(){
     const Choix = parseInt(prompt("Entrez votre choix :"))
     switch(Choix){
         case 1:
-            let CIN1 = prompt("Entrez votre CIN : ")
+            let CIN1 = prompt("Entrez le CIN du candidat : ")
             for(let i = 0; i < candidat.length; i++){
                 if(candidat[i].Cin == CIN1){
                     let Modification = prompt("Entrez le nouveau parti politique : ")
                     candidat[i].Parti_politique = Modification
-                    // break
+                    break
                 }else if (i+1==candidat.length){
                     console.log ("Le candidat que vous choisez n'exist pas .")
                 }
             }
             break
         case 2:
-            let CIN2 = prompt("Entrez votre CIN : ")
+            let CIN2 = prompt("Entrez le CIN du candidat : ")
             let j=0
             for(let j = 0; j < candidat.length; j++){
                 if(candidat[j].Cin == CIN2){
                     let Modification = parseInt(prompt("Entrez le nouveau âge : "))
                     candidat[j].Âge = Modification
-                    // break
+                    break
                 }else if (j+1==CIN2.length){
                     console.log("Le candidat que vous choisez n'exist pas .")
                 }
@@ -40,7 +40,7 @@ function Modifier(){
             break
         default :
             console.log("Choix incorrect")
-            // return Modifier()
+            return Modifier()
     }
 }
 Modifier()
