@@ -1,5 +1,79 @@
-// 1. Ajouter un nouveau candidat : 
 const prompt = require("prompt-sync")();
+let Candidat = [
+{Cin: "bh001", Nom: "Alami", Prénom: "Yassine", Parti_politique: "Parti du Renouveau", Âge: 42, Electeurs:[ "bh000"]},
+{Cin: "bh002", Nom: "Benjelloun", Prénom: "Salma", Parti_politique: "Alliance Citoyenne", Âge: 36, Electeurs: ["kj123", "mn4521" , "rt789", "xp0012"]},
+{Cin: "bh003", Nom: "El Mansouri", Prénom: "Karim", Parti_politique: "Parti de l'Avenir", Âge: 51, Electeurs: ["fg0000","az456", "qw7834"]},
+{Cin: "bh004", Nom: "Idrissi", Prénom: "Lina", Parti_politique: "Mouvement Progressiste", Âge: 29, Electeurs: ["pl321", "yu6547"]},
+{Cin: "bh005", Nom: "Tazi", Prénom: "Amine", Parti_politique: "Parti du Renouveau", Âge: 47, Electeurs: ["dc987", "hk2345","we159", "lo8765","nm753", "bc1029"]},{
+Cin: "bh006", Nom: "Berrada", Prénom: "Nadia", Parti_politique: "Alliance Citoyenne", Âge: 39, Electeurs: ["er246", "ty5318","er246", "ty5318","qa214"]},
+{Cin: "bh007", Nom: "Chraibi", Prénom: "Mehdi", Parti_politique: "Parti de l'Avenir", Âge: 33, Electeurs: ["ws639", "ed7412","rf825", "tg3964","yh472", "uj8153","ik956"]},
+{Cin: "bh008", Nom: "Alaoui", Prénom: "Imane", Parti_politique: "Mouvement Progressiste", Âge: 45, Electeurs: ["ab214", "cd5831", "ef639", "gh7412", "ij825", "kl3964", "mn472", "op8153"]},
+{Cin: "bh009", Nom: "Bennani", Prénom: "Omar", Parti_politique: "Parti du Renouveau", Âge: 58, Electeurs: ["qr956", "st2478", "uv381", "wx6295", "yz714", "aa3582", "bb263", "cc9471", "dd548"]},
+{Cin: "bh010", Nom: "Skalli", Prénom: "Sara", Parti_politique: "Alliance Citoyenne", Âge: 31, Electeurs: ["hk183", "lm7294", "np456", "qr8127", "st365", "uv9402", "wx5717"]}
+];
+function afficherMenu() {
+    let continuer = true;
+    while (continuer) {
+        console.log("\n===========================================");
+        console.log("********GESTION DES ELECTIONS ET LISTES********");
+        console.log("**************ELECTIONS AU MAROC**************");
+        console.log("===========================================");
+        console.log("1) => Ajouter un nouveau candidat");
+        console.log("2) => Ajouter plusieurs candidats à la fois");
+        console.log("3) => Afficher la liste des candidats");
+        console.log("4) => Voter pour un candidat");
+        console.log("5) => Modifier les informations d'un candidat");
+        console.log("6) => Supprimer un candidat");
+        console.log("7) => Rechercher des candidats");
+        console.log("8) => Statistiques de l'élection");
+        console.log("0) => Quitter");
+        console.log("===========================================");
+
+        const choixMenu = parseInt(prompt("Entrez votre choix : "));
+
+        switch (choixMenu) {
+            case 1:
+                ajouterCandidat();
+                break;
+            case 2:
+                ajouterPlusieursCandidats();
+                break;
+            case 3:
+                choosingAffichage();
+                break;
+            case 4:
+                Voter();
+                break;
+            case 5:
+                Modifier();
+                break;
+            case 6:
+                Supprimer();
+                break;
+            case 7:
+                Rechercher();
+                break;
+            case 8:
+                Statistiques();
+                break;
+            case 0:
+                console.log("Merci d'avoir utilisé le système. Au revoir !");
+                continuer = false;
+                break;
+            default:
+                console.log("Choix invalide, veuillez réessayer.");
+        }
+    }
+}
+
+afficherMenu();
+
+function Afficher(tableau,i){
+    console.log(`Cin :${tableau[i].Cin},Nom :${tableau[i].Nom},Prenom :${tableau[i].Prénom},PartiPolitique : ${tableau[i].Parti_politique},age : ${tableau[i].Âge},Electeurs : ${tableau[i].Electeurs.length}`)
+}
+
+// 1. Ajouter un nouveau candidat : 
+
 let candidat = {
     cin : "",
     nom : "",
@@ -21,15 +95,15 @@ function ajouterCandidat(){
     return candidat
 }
 console.log(ajouterCandidat())
-//  2. Ajouter plusieurs candidats à la fois.
-// const prompt = require("prompt-sync")();
 
-    let candidatList = []
+//  2. Ajouter plusieurs candidats à la fois.
+
+let CandidatAjouter = [];
     const num = parseInt(prompt("num ?"))
 for (let i = 0; i < num; i++) {
     console.log("--------------------------------")
     ajouterCandidat()
-    console.log(candidatList)
+    console.log(CandidatAjouter)
 }
 function ajouterCandidat(){
     const cin = prompt("Entrer le cin du candidat :");
@@ -44,22 +118,13 @@ function ajouterCandidat(){
     let candidat = {
         CIN: cin,Nom: nom,Prenom: prenom,Parti_Politique: partiPolitique,Age: age,Electeurs: electeurs
     }
-    candidatList.push(candidat)
+    Candidat.push(candidat)
 };
 ajouterCandidat()
 console.log(candidatList)
+
 // 3. Afficher la liste des candidats : 
-// const prompt = require("prompt-sync")();
-// const candidat = [{Cin: "bh001", Nom: "Alami", Prénom: "Yassine", Parti_politique: "Parti du Renouveau", Âge: 42, Electeurs:[ "bh000"]},{
-// Cin: "bh002", Nom: "Benjelloun", Prénom: "Salma", Parti_politique: "Alliance Citoyenne", Âge: 36, Electeurs: ["kj123", "mn4521" , "rt789", "xp0012"]},{
-// Cin: "bh003", Nom: "El Mansouri", Prénom: "Karim", Parti_politique: "Parti de l'Avenir", Âge: 51, Electeurs: ["fg0000","az456", "qw7834"]},{
-// Cin: "bh004", Nom: "Idrissi", Prénom: "Lina", Parti_politique: "Mouvement Progressiste", Âge: 29, Electeurs: ["pl321", "yu6547"]},{
-// Cin: "bh005", Nom: "Tazi", Prénom: "Amine", Parti_politique: "Parti du Renouveau", Âge: 47, Electeurs: ["dc987", "hk2345","we159", "lo8765","nm753", "bc1029"]},{
-// Cin: "bh006", Nom: "Berrada", Prénom: "Nadia", Parti_politique: "Alliance Citoyenne", Âge: 39, Electeurs: ["er246", "ty5318","er246", "ty5318","qa214"]},{
-// Cin: "bh007", Nom: "Chraibi", Prénom: "Mehdi", Parti_politique: "Parti de l'Avenir", Âge: 33, Electeurs: ["ws639", "ed7412","rf825", "tg3964","yh472", "uj8153","ik956"]},{
-// Cin: "bh008", Nom: "Alaoui", Prénom: "Imane", Parti_politique: "Mouvement Progressiste", Âge: 45, Electeurs: ["ab214", "cd5831", "ef639", "gh7412", "ij825", "kl3964", "mn472", "op8153"]},{
-// Cin: "bh009", Nom: "Bennani", Prénom: "Omar", Parti_politique: "Parti du Renouveau", Âge: 58, Electeurs: ["qr956", "st2478", "uv381", "wx6295", "yz714", "aa3582", "bb263", "cc9471", "dd548"]},{
-// Cin: "bh010", Nom: "Skalli", Prénom: "Sara", Parti_politique: "Alliance Citoyenne", Âge: 31, Electeurs: ["hk183", "lm7294", "np456", "qr8127", "st365", "uv9402", "wx5717"]}]
+
 function Afficher(tableau,i){
     console.log(`Cin :${tableau[i].Cin},Nom :${tableau[i].Nom},Prenom :${tableau[i].Prénom},PartiPolitique : ${tableau[i].Parti_politique},age : ${tableau[i].Âge},Electeurs : ${tableau[i].Electeurs.length}`)
 }
@@ -68,7 +133,7 @@ function choisir(){
     const choix = parseInt(prompt("Entrez votre choix :"))
     switch(choix){
         case 1 :
-            const Tri = [...candidat]
+            const Tri = [...Candidat]
                 for (let i=0;i<Tri.length;i++){
                     for(let j=i+1;j<Tri.length;j++){
                         if(Tri[i].Electeurs.length<Tri[j].Electeurs.length){
@@ -94,18 +159,9 @@ function choisir(){
         }
 }
 choisir()
+
 // 4. Voter pour un candidat : 
-// const prompt = require("prompt-sync")();
-// const candidat = [{Cin: "bh001", Nom: "Alami", Prénom: "Yassine", Parti_politique: "Parti du Renouveau", Âge: 42, Electeurs:[ "bh000"]},{
-// Cin: "bh002", Nom: "Benjelloun", Prénom: "Salma", Parti_politique: "Alliance Citoyenne", Âge: 36, Electeurs: ["kj123", "mn4521" , "rt789", "xp0012"]},{
-// Cin: "bh003", Nom: "El Mansouri", Prénom: "Karim", Parti_politique: "Parti de l'Avenir", Âge: 51, Electeurs: ["fg0000","az456", "qw7834"]},{
-// Cin: "bh004", Nom: "Idrissi", Prénom: "Lina", Parti_politique: "Mouvement Progressiste", Âge: 29, Electeurs: ["pl321", "yu6547"]},{
-// Cin: "bh005", Nom: "Tazi", Prénom: "Amine", Parti_politique: "Parti du Renouveau", Âge: 47, Electeurs: ["dc987", "hk2345","we159", "lo8765","nm753", "bc1029"]},{
-// Cin: "bh006", Nom: "Berrada", Prénom: "Nadia", Parti_politique: "Alliance Citoyenne", Âge: 39, Electeurs: ["er246", "ty5318","er246", "ty5318","qa214"]},{
-// Cin: "bh007", Nom: "Chraibi", Prénom: "Mehdi", Parti_politique: "Parti de l'Avenir", Âge: 33, Electeurs: ["ws639", "ed7412","rf825", "tg3964","yh472", "uj8153","ik956"]},{
-// Cin: "bh008", Nom: "Alaoui", Prénom: "Imane", Parti_politique: "Mouvement Progressiste", Âge: 45, Electeurs: ["ab214", "cd5831", "ef639", "gh7412", "ij825", "kl3964", "mn472", "op8153"]},{
-// Cin: "bh009", Nom: "Bennani", Prénom: "Omar", Parti_politique: "Parti du Renouveau", Âge: 58, Electeurs: ["qr956", "st2478", "uv381", "wx6295", "yz714", "aa3582", "bb263", "cc9471", "dd548"]},{
-// Cin: "bh010", Nom: "Skalli", Prénom: "Sara", Parti_politique: "Alliance Citoyenne", Âge: 31, Electeurs: ["hk183", "lm7294", "np456", "qr8127", "st365", "uv9402", "wx5717"]}]
+
 function Voter(){
     const CIN = prompt("Entrez votre CIN : ")
     for(i=0;i<candidat.length;i++){
@@ -128,18 +184,9 @@ function Voter(){
     }
 }
 Voter()
+
 // 5. Modifier les informations d'un candidat : 
-// const prompt = require("prompt-sync")();
-// const candidat = [{Cin: "bh001", Nom: "Alami", Prénom: "Yassine", Parti_politique: "Parti du Renouveau", Âge: 42, Electeurs:[ "bh000"]},{
-// Cin: "bh002", Nom: "Benjelloun", Prénom: "Salma", Parti_politique: "Alliance Citoyenne", Âge: 36, Electeurs: ["kj123", "mn4521" , "rt789", "xp0012"]},{
-// Cin: "bh003", Nom: "El Mansouri", Prénom: "Karim", Parti_politique: "Parti de l'Avenir", Âge: 51, Electeurs: ["fg0000","az456", "qw7834"]},{
-// Cin: "bh004", Nom: "Idrissi", Prénom: "Lina", Parti_politique: "Mouvement Progressiste", Âge: 29, Electeurs: ["pl321", "yu6547"]},{
-// Cin: "bh005", Nom: "Tazi", Prénom: "Amine", Parti_politique: "Parti du Renouveau", Âge: 47, Electeurs: ["dc987", "hk2345","we159", "lo8765","nm753", "bc1029"]},{
-// Cin: "bh006", Nom: "Berrada", Prénom: "Nadia", Parti_politique: "Alliance Citoyenne", Âge: 39, Electeurs: ["er246", "ty5318","er246", "ty5318","qa214"]},{
-// Cin: "bh007", Nom: "Chraibi", Prénom: "Mehdi", Parti_politique: "Parti de l'Avenir", Âge: 33, Electeurs: ["ws639", "ed7412","rf825", "tg3964","yh472", "uj8153","ik956"]},{
-// Cin: "bh008", Nom: "Alaoui", Prénom: "Imane", Parti_politique: "Mouvement Progressiste", Âge: 45, Electeurs: ["ab214", "cd5831", "ef639", "gh7412", "ij825", "kl3964", "mn472", "op8153"]},{
-// Cin: "bh009", Nom: "Bennani", Prénom: "Omar", Parti_politique: "Parti du Renouveau", Âge: 58, Electeurs: ["qr956", "st2478", "uv381", "wx6295", "yz714", "aa3582", "bb263", "cc9471", "dd548"]},{
-// Cin: "bh010", Nom: "Skalli", Prénom: "Sara", Parti_politique: "Alliance Citoyenne", Âge: 31, Electeurs: ["hk183", "lm7294", "np456", "qr8127", "st365", "uv9402", "wx5717"]}]
+
 function Modifier(){
     console.log(`Choisez 1 pour Modifier le parti politique d'un candidat.\nChoisez 2 pour Modifier l'âge d'un candidat.`);
     const Choix = parseInt(prompt("Entrez votre choix :"))
@@ -175,18 +222,9 @@ function Modifier(){
     }
 }
 Modifier()
+
 // 6. Supprimer un candidat : 
-// const prompt = require("prompt-sync")();
-// const candidat = [{Cin: "bh001", Nom: "Alami", Prénom: "Yassine", Parti_politique: "Parti du Renouveau", Âge: 42, Electeurs:[ "bh000"]},{
-// Cin: "bh002", Nom: "Benjelloun", Prénom: "Salma", Parti_politique: "Alliance Citoyenne", Âge: 36, Electeurs: ["kj123", "mn4521" , "rt789", "xp0012"]},{
-// Cin: "bh003", Nom: "El Mansouri", Prénom: "Karim", Parti_politique: "Parti de l'Avenir", Âge: 51, Electeurs: ["fg0000","az456", "qw7834"]},{
-// Cin: "bh004", Nom: "Idrissi", Prénom: "Lina", Parti_politique: "Mouvement Progressiste", Âge: 29, Electeurs: ["pl321", "yu6547"]},{
-// Cin: "bh005", Nom: "Tazi", Prénom: "Amine", Parti_politique: "Parti du Renouveau", Âge: 47, Electeurs: ["dc987", "hk2345","we159", "lo8765","nm753", "bc1029"]},{
-// Cin: "bh006", Nom: "Berrada", Prénom: "Nadia", Parti_politique: "Alliance Citoyenne", Âge: 39, Electeurs: ["er246", "ty5318","er246", "ty5318","qa214"]},{
-// Cin: "bh007", Nom: "Chraibi", Prénom: "Mehdi", Parti_politique: "Parti de l'Avenir", Âge: 33, Electeurs: ["ws639", "ed7412","rf825", "tg3964","yh472", "uj8153","ik956"]},{
-// Cin: "bh008", Nom: "Alaoui", Prénom: "Imane", Parti_politique: "Mouvement Progressiste", Âge: 45, Electeurs: ["ab214", "cd5831", "ef639", "gh7412", "ij825", "kl3964", "mn472", "op8153"]},{
-// Cin: "bh009", Nom: "Bennani", Prénom: "Omar", Parti_politique: "Parti du Renouveau", Âge: 58, Electeurs: ["qr956", "st2478", "uv381", "wx6295", "yz714", "aa3582", "bb263", "cc9471", "dd548"]},{
-// Cin: "bh010", Nom: "Skalli", Prénom: "Sara", Parti_politique: "Alliance Citoyenne", Âge: 31, Electeurs: ["hk183", "lm7294", "np456", "qr8127", "st365", "uv9402", "wx5717"]}]
+
 function Supprimer(){
     const CIN = prompt("Entrez le CIN que vous voulez supprimer : ")
     for (i=0;i<candidat.length;i++){
@@ -213,18 +251,9 @@ function Supprimer(){
     }
 }
 Supprimer()
+
 // 7. Rechercher des candidats : 
-// const prompt = require("prompt-sync")();
-const Candidat = [{Cin: "bh001", Nom: "Alami", Prénom: "Yassine", Parti_politique: "Parti du Renouveau", Âge: 42, Electeurs:[ "bh000"]},{
-Cin: "bh002", Nom: "Benjelloun", Prénom: "Salma", Parti_politique: "Alliance Citoyenne", Âge: 36, Electeurs: ["kj123", "mn4521" , "rt789", "xp0012"]},{
-Cin: "bh003", Nom: "El Mansouri", Prénom: "Karim", Parti_politique: "Parti de l'Avenir", Âge: 51, Electeurs: ["fg0000","az456", "qw7834"]},{
-Cin: "bh004", Nom: "Idrissi", Prénom: "Lina", Parti_politique: "Mouvement Progressiste", Âge: 29, Electeurs: ["pl321", "yu6547"]},{
-Cin: "bh005", Nom: "Tazi", Prénom: "Amine", Parti_politique: "Parti du Renouveau", Âge: 47, Electeurs: ["dc987", "hk2345","we159", "lo8765","nm753", "bc1029"]},{
-Cin: "bh006", Nom: "Berrada", Prénom: "Nadia", Parti_politique: "Alliance Citoyenne", Âge: 39, Electeurs: ["er246", "ty5318","er246", "ty5318","qa214"]},{
-Cin: "bh007", Nom: "Chraibi", Prénom: "Mehdi", Parti_politique: "Parti de l'Avenir", Âge: 33, Electeurs: ["ws639", "ed7412","rf825", "tg3964","yh472", "uj8153","ik956"]},{
-Cin: "bh008", Nom: "Alaoui", Prénom: "Imane", Parti_politique: "Mouvement Progressiste", Âge: 45, Electeurs: ["ab214", "cd5831", "ef639", "gh7412", "ij825", "kl3964", "mn472", "op8153"]},{
-Cin: "bh009", Nom: "Bennani", Prénom: "Omar", Parti_politique: "Parti du Renouveau", Âge: 58, Electeurs: ["qr956", "st2478", "uv381", "wx6295", "yz714", "aa3582", "bb263", "cc9471", "dd548"]},{
-Cin: "bh010", Nom: "Skalli", Prénom: "Sara", Parti_politique: "Alliance Citoyenne", Âge: 31, Electeurs: ["hk183", "lm7294", "np456", "qr8127", "st365", "uv9402", "wx5717"]}]
+
 function Afficher(tableau,i){
     console.log(`Cin :${tableau[i].Cin},Nom :${tableau[i].Nom},Prenom :${tableau[i].Prénom},PartiPolitique : ${tableau[i].Parti_politique},age : ${tableau[i].Âge},Electeurs : ${tableau[i].Electeurs.length}`)
 }
@@ -240,18 +269,9 @@ function Rechercher() {
     }
 }
 Rechercher()
+
 // 8. Statistiques de l'élection : 
-// const prompt = require("prompt-sync")();
-// const Candidat = [{Cin: "bh001", Nom: "Alami", Prénom: "Yassine", Parti_politique: "Parti du Renouveau", Âge: 42, Electeurs:[ "bh000"]},{
-// Cin: "bh002", Nom: "Benjelloun", Prénom: "Salma", Parti_politique: "Alliance Citoyenne", Âge: 36, Electeurs: ["kj123", "mn4521" , "rt789", "xp0012"]},{
-// Cin: "bh003", Nom: "El Mansouri", Prénom: "Karim", Parti_politique: "Parti de l'Avenir", Âge: 51, Electeurs: ["fg0000","az456", "qw7834"]},{
-// Cin: "bh004", Nom: "Idrissi", Prénom: "Lina", Parti_politique: "Mouvement Progressiste", Âge: 29, Electeurs: ["pl321", "yu6547"]},{
-// Cin: "bh005", Nom: "Tazi", Prénom: "Amine", Parti_politique: "Parti du Renouveau", Âge: 47, Electeurs: ["dc987", "hk2345","we159", "lo8765","nm753", "bc1029"]},{
-// Cin: "bh006", Nom: "Berrada", Prénom: "Nadia", Parti_politique: "Alliance Citoyenne", Âge: 39, Electeurs: ["er246", "ty5318","er246", "ty5318","qa214"]},{
-// Cin: "bh007", Nom: "Chraibi", Prénom: "Mehdi", Parti_politique: "Parti de l'Avenir", Âge: 33, Electeurs: ["ws639", "ed7412","rf825", "tg3964","yh472", "uj8153","ik956"]},{
-// Cin: "bh008", Nom: "Alaoui", Prénom: "Imane", Parti_politique: "Mouvement Progressiste", Âge: 45, Electeurs: ["ab214", "cd5831", "ef639", "gh7412", "ij825", "kl3964", "mn472", "op8153"]},{
-// Cin: "bh009", Nom: "Bennani", Prénom: "Omar", Parti_politique: "Parti du Renouveau", Âge: 58, Electeurs: ["qr956", "st2478", "uv381", "wx6295", "yz714", "aa3582", "bb263", "cc9471", "dd548"]},{
-// Cin: "bh010", Nom: "Skalli", Prénom: "Sara", Parti_politique: "Alliance Citoyenne", Âge: 31, Electeurs: ["hk183", "lm7294", "np456", "qr8127", "st365", "uv9402", "wx5717"]}]
+
 function Statistiques() {
     let totalCandidats = Candidat.length;
     console.log("Total candidats : " + totalCandidats);
@@ -306,3 +326,59 @@ function Statistiques() {
 }
 Statistiques()
 
+// function afficherMenu() {
+//     let continuer = true;
+//     while (continuer) {
+//         console.log("\n===========================================");
+//         console.log("********GESTION DES ELECTIONS ET LISTES********");
+//         console.log("**************ELECTIONS AU MAROC**************");
+//         console.log("===========================================");
+//         console.log("1) => Ajouter un nouveau candidat");
+//         console.log("2) => Ajouter plusieurs candidats à la fois");
+//         console.log("3) => Afficher la liste des candidats");
+//         console.log("4) => Voter pour un candidat");
+//         console.log("5) => Modifier les informations d'un candidat");
+//         console.log("6) => Supprimer un candidat");
+//         console.log("7) => Rechercher des candidats");
+//         console.log("8) => Statistiques de l'élection");
+//         console.log("0) => Quitter");
+//         console.log("===========================================");
+
+//         const choixMenu = parseInt(prompt("Entrez votre choix : "));
+
+//         switch (choixMenu) {
+//             case 1:
+//                 ajouterCandidat();
+//                 break;
+//             case 2:
+//                 ajouterPlusieursCandidats();
+//                 break;
+//             case 3:
+//                 choosingAffichage();
+//                 break;
+//             case 4:
+//                 Voter();
+//                 break;
+//             case 5:
+//                 Modifier();
+//                 break;
+//             case 6:
+//                 Supprimer();
+//                 break;
+//             case 7:
+//                 Rechercher();
+//                 break;
+//             case 8:
+//                 Statistiques();
+//                 break;
+//             case 0:
+//                 console.log("Merci d'avoir utilisé le système. Au revoir !");
+//                 continuer = false;
+//                 break;
+//             default:
+//                 console.log("Choix invalide, veuillez réessayer.");
+//         }
+//     }
+// }
+
+// afficherMenu();
